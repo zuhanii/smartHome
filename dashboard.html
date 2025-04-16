@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <script src="https://kit.fontawesome.com/YOUR-KIT-CODE.js" crossorigin="anonymous"></script>
+  <title>Smart Home Dashboard</title>
+  <style>
+    body {
+  font-family: 'Poppins', sans-serif;
+  background: url('background.png') no-repeat center center fixed;
+  background-size: cover;
+  margin: 0;
+  padding: 0;
+  transition: background 0.3s, color 0.3s;
+}
+
+    /* Dark Mode */
+    .dark-mode {
+      background-color: #1e1e1e;
+      color: #f0f0f0;
+    }
+
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #0077b6;
+      padding: 15px;
+      color: white;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    .menu {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .menu a {
+      color: white;
+      text-decoration: none;
+      font-size: 18px;
+      transition: color 0.3s ease;
+      padding: 5px 10px;
+    }
+
+    .menu a:hover {
+      color: #ffdd57;
+    }
+
+    /* Dropdown */
+    .dropdown {
+      position: relative;
+      cursor: pointer;
+    }
+
+    .dropdown-toggle {
+      color: white;
+      padding: 5px 10px;
+      display: inline-block;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background: white;
+      min-width: 160px;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+      border-radius: 5px;
+      top: 35px;
+      left: 0;
+      z-index: 1000;
+    }
+
+    .dropdown-content a {
+      color: black;
+      padding: 10px;
+      display: block;
+      text-decoration: none;
+    }
+
+    .dropdown-content a:hover {
+      background: #0077b6;
+      color: white;
+    }
+
+    .dropdown.active .dropdown-content {
+      display: block;
+    }
+
+    /* Dark Mode Button */
+    #darkModeToggle {
+      background: transparent;
+      color: white;
+      border: 2px solid white;
+      padding: 5px 10px;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: 0.3s;
+    }
+
+    #darkModeToggle:hover {
+      background: white;
+      color: black;
+    }
+
+    /* Content */
+    .container {
+      max-width: 700px;
+      margin: 80px auto;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      overflow: hidden;
+    }
+
+    .banner {
+      width: 100%;
+      height: 200px;
+      background: url('smart_home.jpg') center/cover no-repeat;
+    }
+
+    .container h1 {
+      margin: 20px;
+      text-align: center;
+      color: #0077b6;
+    }
+
+    /* Appliance Controls */
+    .control {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #f9f9f9;
+      padding: 15px 20px;
+      margin: 15px;
+      border-radius: 10px;
+      transition: 0.2s ease;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .control:hover {
+      transform: scale(1.03);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 50px;
+      height: 25px;
+    }
+
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      border-radius: 25px;
+      transition: 0.4s;
+    }
+
+    .slider:before {
+      content: "";
+      position: absolute;
+      height: 18px;
+      width: 18px;
+      left: 4px;
+      bottom: 3px;
+      background-color: white;
+      border-radius: 50%;
+      transition: 0.4s;
+    }
+
+    input:checked + .slider {
+      background-color: #0088cc;
+    }
+
+    input:checked + .slider:before {
+      transform: translateX(25px);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <h2>Smart Home</h2>
+    <div class="menu">
+      <a href="home.html"><i class="fas fa-home"></i> Home</a>
+
+      <div class="dropdown">
+        <span class="dropdown-toggle" onclick="toggleDropdown()"> <i class="fas fa-cog"></i> Settings ▼</span>
+        <div class="dropdown-content">
+          <a href="profile.html">Profile</a>
+          <a href="security.html">Security</a>
+          <a href="preferences.html">Preferences</a>
+        </div>
+      </div>
+
+      <a href="notifications.html"><i class="fas fa-bell"></i> Notifications</a>
+      <a href="support.html"><i class="fas fa-question-circle"></i> Support</a>
+      <a href="login.html"><i class="fas fa-sign-out-alt"></i> Logout</a>
+
+      <button id="darkModeToggle"><i class="fas fa-moon"></i></button>
+    </div>
+  </nav>
+
+  <!-- Main Control Panel -->
+  <div class="container">
+    <div class="banner"></div>
+    <h1>Control Panel</h1>
+
+    <div class="control">
+      <h3>Lights</h3>
+      <label class="switch">
+        <input type="checkbox">
+        <span class="slider"></span>
+      </label>
+    </div>
+
+    <div class="control">
+      <h3>Temperature</h3>
+      <input type="range" id="tempControl" min="16" max="30" value="22" oninput="updateTemp()">
+      <span id="tempValue">22°C</span>
+    </div>
+    <div class="control">
+        <h3>AC</h3>
+        <label class="switch">
+          <input type="checkbox" id="acSwitch">
+          <span class="slider"></span>
+        </label>
+      </div>
+  
+      <div class="control">
+        <h3>Heater</h3>
+        <label class="switch">
+          <input type="checkbox" id="heaterSwitch">
+          <span class="slider"></span>
+        </label>
+      </div>
+  
+      <div class="control">
+        <h3>Sprinklers</h3>
+        <label class="switch">
+          <input type="checkbox" id="sprinklerSwitch">
+          <span class="slider"></span>
+        </label>
+      </div>
+  
+      <div class="control">
+        <h3>Curtains</h3>
+        <label class="switch">
+          <input type="checkbox" id="curtainSwitch">
+          <span class="slider"></span>
+        </label>
+      </div>
+  
+      <div class="control">
+        <h3>Fan</h3>
+        <label class="switch">
+          <input type="checkbox" id="fanSwitch">
+          <span class="slider"></span>
+        </label>
+      </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    function updateTemp() {
+      document.getElementById("tempValue").textContent =
+        document.getElementById("tempControl").value + "°C";
+    }
+
+    // Dropdown Toggle
+    function toggleDropdown() {
+      let dropdown = document.querySelector(".dropdown");
+      dropdown.classList.toggle("active");
+    }
+
+    // Close dropdown when clicking outside
+    document.addEventListener("click", function(event) {
+      let dropdown = document.querySelector(".dropdown");
+      if (!dropdown.contains(event.target)) {
+        dropdown.classList.remove("active");
+      }
+    });
+
+    // Dark Mode Toggle
+    document.getElementById("darkModeToggle").addEventListener("click", function() {
+      document.body.classList.toggle("dark-mode");
+      localStorage.setItem("theme", document.body.classList.contains("dark-mode") ? "dark" : "light");
+    });
+
+    // Load Dark Mode Preference
+    window.onload = function() {
+      if (localStorage.getItem("theme") === "dark") {
+        document.body.classList.add("dark-mode");
+      }
+    };
+  </script>
+
+</body>
+</html>

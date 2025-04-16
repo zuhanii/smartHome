@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Settings - Smart Home</title>
+  <style>
+    body {
+      background: url('background.png') no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .navbar {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #0077b6;
+      padding: 15px 30px;
+      color: white;
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 60px;
+      z-index: 1000;
+    }
+
+    .menu {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .menu a {
+      color: white;
+      text-decoration: none;
+      font-size: 18px;
+    }
+
+    .dropdown {
+      position: relative;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: white;
+      top: 35px;
+      left: 0;
+      min-width: 150px;
+      border-radius: 5px;
+      box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
+      z-index: 1001;
+    }
+
+    .dropdown-content a {
+      display: block;
+      padding: 10px;
+      color: black;
+      text-decoration: none;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 100px auto;
+      background: rgba(255,255,255,0.95);
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    h1 {
+      color: #0077b6;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    * {
+  box-sizing: border-box;
+}
+
+/* Fix navbar overflowing */
+.navbar {
+  flex-wrap: wrap;
+}
+    .setting {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 15px 0;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 10px;
+    }
+
+    .setting label {
+      font-size: 18px;
+    }
+
+    .setting input[type="checkbox"] {
+      transform: scale(1.4);
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <h2>Smart Home</h2>
+    <div class="menu">
+      <a href="home.html">Home</a>
+      <div class="dropdown">
+        <a href="#">Settings ▼</a>
+        <div class="dropdown-content">
+          <a href="profile.html">Profile</a>
+          <a href="settings.html">Security</a>
+          <a href="preferences.html">Preferences</a>
+        </div>
+      </div>
+      <a href="notifications.html">Notifications</a>
+      <a href="#">Support</a>
+      <a href="#">Logout</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <h1>Settings</h1>
+    <div class="setting">
+      <label>Enable Notifications</label>
+      <input type="checkbox" checked>
+    </div>
+    <div class="setting">
+      <label>Auto-Lock Doors</label>
+      <input type="checkbox">
+    </div>
+    <div class="setting">
+      <label>Motion Sensor Alerts</label>
+      <input type="checkbox" checked>
+    </div>
+    <div class="setting">
+      <label>Energy Saver Mode</label>
+      <input type="checkbox">
+    </div>
+    <div class="setting">
+      <label>Allow Remote Access</label>
+      <input type="checkbox" checked>
+    </div>
+  </div>
+</body>
+</html>

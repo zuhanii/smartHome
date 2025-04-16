@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Notifications - Smart Home</title>
+  <style>
+    body {
+      background: url('background.png') no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .navbar {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #0077b6;
+      padding: 15px 30px;
+      color: white;
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 60px;
+      z-index: 1000;
+    }
+
+    .menu {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .menu a {
+      color: white;
+      text-decoration: none;
+      font-size: 18px;
+    }
+
+    .dropdown {
+      position: relative;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: white;
+      top: 35px;
+      left: 0;
+      min-width: 150px;
+      border-radius: 5px;
+      box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
+      z-index: 1001;
+    }
+
+    .dropdown-content a {
+      display: block;
+      padding: 10px;
+      color: black;
+      text-decoration: none;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 100px auto;
+      background: rgba(255,255,255,0.95);
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    h1 {
+      color: #0077b6;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .notification {
+      border-bottom: 1px solid #ccc;
+      padding: 15px 10px;
+      text-align: left;
+    }
+
+    .notification time {
+      display: block;
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 5px;
+    }
+
+    .notification p {
+      margin: 0;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <h2>Smart Home</h2>
+    <div class="menu">
+      <a href="home.html">Home</a>
+      <div class="dropdown">
+        <a href="#">Settings ▼</a>
+        <div class="dropdown-content">
+          <a href="profile.html">Profile</a>
+          <a href="settings.html">Security</a>
+          <a href="preferences.html">Preferences</a>
+        </div>
+      </div>
+      <a href="notifications.html">Notifications</a>
+      <a href="#">Support</a>
+      <a href="#">Logout</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <h1>Notifications</h1>
+
+    <div class="notification">
+      <time>2025-04-04 21:35</time>
+      <p>Motion detected in Garage.</p>
+    </div>
+    <div class="notification">
+      <time>2025-04-04 19:20</time>
+      <p>Temperature in Living Room adjusted to 24°C.</p>
+    </div>
+    <div class="notification">
+      <time>2025-04-04 17:05</time>
+      <p>Garage door opened remotely.</p>
+    </div>
+    <div class="notification">
+      <time>2025-04-04 14:12</time>
+      <p>New firmware update installed for Smart Thermostat.</p>
+    </div>
+    <div class="notification">
+      <time>2025-04-04 11:45</time>
+      <p>Sprinklers activated in Backyard.</p>
+    </div>
+    <div class="notification">
+      <time>2025-04-04 09:10</time>
+      <p>Security system armed.</p>
+    </div>
+    <div class="notification">
+      <time>2025-04-03 23:59</time>
+      <p>All lights turned off automatically.</p>
+    </div>
+    <div class="notification">
+      <time>2025-04-03 20:00</time>
+      <p>AC turned off in Kids Bedroom.</p>
+    </div>
+
+    <!-- Add more fake entries as needed -->
+  </div>
+</body>
+</html>

@@ -3,191 +3,155 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smart Home Management</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Smart Home Login</title>
+    <script src="https://kit.fontawesome.com/YOUR-KIT-CODE.js" crossorigin="anonymous"></script>
+
     <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #dbeafe;
-            color: #333;
-            text-align: center;
-            padding: 20px;
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
-        .container {
-            max-width: 600px;
-            margin: auto;
+        body, html {
+            height: 100%;
         }
 
-        .hidden {
-            display: none;
-        }
-
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: #0077b6;
-            padding: 15px;
-            color: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-        }
-
-        .menu {
-            display: flex;
-            gap: 15px;
-        }
-
-        .menu a {
-            color: white;
-            text-decoration: none;
-            font-size: 18px;
-        }
-
-        .login-form, .dashboard {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-            margin-top: 20px;
-        }
-
-        input, button {
+        /* GIF Background */
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
-            padding: 12px;
-            margin: 10px 0;
+            height: 100%;
+            background: url('techy.gif') no-repeat center center;
+            background-size: cover;
+            z-index: -1;
+        }
+
+        /* Enlarged login form with image as a top header */
+        .login-container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -40%);
+        background: rgba(255, 255, 255, 0.15);
+        width: 500px;
+        height: 600px;
+        border-radius: 20px;
+        backdrop-filter: blur(12px);
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        text-align: center;
+        overflow: hidden;
+        opacity: 0;
+        animation: fadeSlideIn 1.2s ease forwards;
+        animation-delay: 4s; /* ⏱️ Delayed by 4 seconds */
+    }
+
+    @keyframes fadeSlideIn {
+        0% {
+            opacity: 0;
+            transform: translate(-50%, -40%);
+        }
+        100% {
+            opacity: 1;
+            transform: translate(-50%, -50%);
+        }
+    }
+
+
+        /* Full-width image on top half */
+        .form-header {
+            width: 100%;
+            height: 40%;
+            background: url('form-top-image.png') no-repeat center;
+            background-size: cover;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+        }
+
+        /* Smart Home Manager Heading */
+        .form-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: rgb(42, 151, 205);
+            margin-top: 15px;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Login form fields */
+        .login-form {
+            padding: 20px 30px;
+        }
+
+        .login-form input,
+        .login-form button {
+            width: 100%;
+            padding: 14px;
+            margin: 12px 0;
             border-radius: 8px;
-            border: 1px solid #ccc;
+            border: none;
             font-size: 16px;
         }
 
-        button {
+        .login-form input {
+            background: rgba(255,255,255,0.8);
+            border: 1px solid #ccc;
+        }
+
+        .login-form button {
             background: #0088cc;
             color: white;
+            font-size: 18px;
             cursor: pointer;
-            transition: background 0.3s;
+            transition: background 0.3s ease, transform 0.2s ease;
         }
 
-        button:hover {
+        .login-form button:hover {
             background: #0077b6;
+            transform: scale(1.05);
         }
 
-        .dashboard img {
-            width: 100%;
-            border-radius: 10px;
-            margin-bottom: 20px;
+        .error-message {
+            color: red;
+            font-size: 14px;
         }
 
-        .control {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: #f9f9f9;
-            padding: 15px;
-            border-radius: 10px;
-            margin: 10px 0;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Toggle Switch */
-        .switch {
-            position: relative;
-            display: inline-block;
-            width: 50px;
-            height: 25px;
-        }
-
-        .switch input {
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
-
-        .slider {
-            position: absolute;
-            cursor: pointer;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: #ccc;
-            border-radius: 25px;
-            transition: 0.4s;
-        }
-
-        .slider:before {
-            content: "";
-            position: absolute;
-            height: 18px;
-            width: 18px;
-            left: 4px;
-            bottom: 3px;
-            background-color: white;
-            border-radius: 50%;
-            transition: 0.4s;
-        }
-
-        input:checked + .slider {
-            background-color: #0088cc;
-        }
-
-        input:checked + .slider:before {
-            transform: translateX(25px);
-        }
     </style>
 </head>
 <body>
-    <nav class="navbar">
-        <h2>Smart Home</h2>
-        <div class="menu">
-            <a href="home.html">Home</a>
-            <a href="#">Settings</a>
-            <a href="#">Logout</a>
-        </div>
-    </nav>
 
-    <div class="container">
-        <h1>Smart Home Management</h1>
-        
-        <!-- Login Form -->
-        <div class="login-form" id="loginForm">
-            <h2>Login</h2>
+    <!-- GIF Background -->
+    <div class="video-background"></div>
+
+    <!-- Enlarged Login Form with Full-Width Header Image -->
+    <div class="login-container">
+        <div class="form-header"></div> <!-- Image header section -->
+        <h2 class="form-title">Smart Home Manager</h2> <!-- Heading Added -->
+        <div class="login-form">
             <input type="text" id="username" placeholder="Username">
             <input type="password" id="password" placeholder="Password">
             <button onclick="validateLogin()">Login</button>
-            <p id="error-msg"></p>
-        </div>
-        
-        <!-- Main Dashboard -->
-        <div class="dashboard hidden" id="dashboard">
-            <img src="smart_home.jpg" alt="Smart Home">
-            <h2>Control Panel</h2>
-            
-            <div class="control">
-                <h3>Lights</h3>
-                <label class="switch">
-                    <input type="checkbox" id="lightSwitch">
-                    <span class="slider"></span>
-                </label>
-            </div>
-            
-            <div class="control">
-                <h3>Temperature</h3>
-                <input type="range" id="tempControl" min="16" max="30" value="22" oninput="updateTemp()">
-                <span id="tempValue">22°C</span>
-            </div>
-            
-            <div class="control">
-                <h3>Door Lock</h3>
-                <label class="switch">
-                    <input type="checkbox" id="lockSwitch">
-                    <span class="slider"></span>
-                </label>
-            </div>
+            <p id="error-msg" class="error-message"></p>
         </div>
     </div>
-    
-    <script src="script.js"></script>
+
+    <!-- Login Validation Script -->
+    <script>
+        function validateLogin() {
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+            var errorMsg = document.getElementById("error-msg");
+
+            if (username === "admin" && password === "1234") {
+                window.location.href = "dashboard.html";
+            } else {
+                errorMsg.textContent = "Invalid username or password!";
+            }
+        }
+    </script>
+
 </body>
 </html>

@@ -4,43 +4,109 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Smart Home Management</title>
-    <link rel="stylesheet" href="styles.css">
     <style>
         body {
+            background: url('background.png') no-repeat center center fixed;
             font-family: 'Poppins', sans-serif;
             background-color: #dbeafe;
             color: #333;
             text-align: center;
-            padding: 20px;
+            padding: 0;
+            margin: 0;
         }
+        /* Global box-sizing */
+* {
+  box-sizing: border-box;
+}
 
-        .container {
-            max-width: 800px;
-            margin: auto;
-        }
+/* Fix navbar overflowing */
+.navbar {
+  flex-wrap: wrap;
+}
 
+
+        /* Navbar */
         .navbar {
+            width: 100%;
             display: flex;
             justify-content: space-between;
             align-items: center;
             background: #0077b6;
-            padding: 15px;
+            padding: 15px 30px;
             color: white;
-            border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 60px;
+            z-index: 1000;
+        }
+
+        .navbar h2 {
+            margin: 0;
+            font-size: 22px;
         }
 
         .menu {
             display: flex;
-            gap: 15px;
+            gap: 20px;
+            align-items: center;
         }
 
         .menu a {
             color: white;
             text-decoration: none;
             font-size: 18px;
+            transition: 0.3s ease-in-out;
+            padding: 5px 10px;
         }
 
+        .menu a:hover {
+            text-decoration: underline;
+        }
+
+        /* Dropdown */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            min-width: 150px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+            top: 35px;
+            left: 0;
+            z-index: 1000;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 10px;
+            display: block;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Container */
+        .container {
+            max-width: 900px;
+            margin: 100px auto 0; /* Adjusted to prevent navbar overlap */
+            padding: 20px;
+        }
+
+        /* Grid */
         .home-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -50,32 +116,56 @@
 
         .room {
             background: white;
-            padding: 20px;
+            padding: 30px;
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
             text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .room:hover {
+            transform: scale(1.05);
         }
 
         .room img {
-            width: 80px;
-            height: 80px;
-            margin-bottom: 10px;
+            width: 150px;
+            height: 150px;
+            margin-bottom: 15px;
+        }
+
+        /* Fix Scrollbar Issue */
+        html, body {
+            overflow-x: hidden;
         }
     </style>
 </head>
 <body>
+
+    <!-- Fixed Navbar -->
     <nav class="navbar">
         <h2>Smart Home</h2>
+        
         <div class="menu">
             <a href="#">Home</a>
-            <a href="#">Settings</a>
+
+            <div class="dropdown">
+                <a href="#">Settings ▼</a>
+                <div class="dropdown-content">
+                    <a href="#">Profile</a>
+                    <a href="#">Security</a>
+                    <a href="#">Preferences</a>
+                </div>
+            </div>
+
+            <a href="#">Notifications</a>
+            <a href="#">Support</a>
             <a href="#">Logout</a>
         </div>
     </nav>
 
     <div class="container">
         <h1>Home Management</h1>
-        
+
         <div class="home-grid">
             <div class="room">
                 <img src="master_bedroom.png" alt="Master Bedroom">
@@ -103,5 +193,6 @@
             </div>
         </div>
     </div>
+
 </body>
 </html>
